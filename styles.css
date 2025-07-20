@@ -44,9 +44,15 @@ h1 {
     gap: 10px;
 }
 
-.sizeS-slider {
+.size-slider {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.size-input > h3 {
+    font-weight: 350;
+    font-size: 25px;
+    color:rgba(0, 0, 0, 0.535);
 }
 
