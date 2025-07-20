@@ -25,4 +25,11 @@ function createCells(size) {
     }
 }
 
+const sizeSlider = document.querySelector(".sizeSliderInput");
+const sizeIndicator = document.querySelector(".sizeIndicator");
+sizeIndicator.textContent = `Size: ${sizeSlider.value}x${sizeSlider.value}`;
+
+sizeSlider.addEventListener("input", () => {
+    sizeIndicator.textContent = `Size: ${sizeSlider.value}x${sizeSlider.value}`;
+});
 createCells(16);

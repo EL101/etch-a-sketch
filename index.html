@@ -10,9 +10,12 @@
 <body>
     <h1>Etch-A-Sketch</h1>
     <div class="container"></div>
-    <div class="slider">
+    <div class="sizeInput">
         <h3>Cells per side</h3>
-        <input type="range" id="sizeSlider" min="1" max="100" value="16">
+        <div class="sizeSlider">
+            <input class="sizeSliderInput" type="range" min="1" max="100" value="16">
+            <span class="sizeIndicator">Size: </span>
+        </div>
         <button>Start</button>
     </div>
 </body>
