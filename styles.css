@@ -10,21 +10,24 @@ body {
     align-items: center;
     text-align: center;
     font-family: Bitcount, sans-serif;
+    background-color: rgba(0, 0, 0, 0.172);
 }
 
 h1 {
-    margin: 20px auto 40px auto;
+    margin: 20px auto 30px auto;
     color: rgb(218, 141, 48);
     font-size: 50px;
     font-weight: 450;
 }
+
 .container {
     box-sizing: content-box;
     display: flex;
     flex-direction: column;
     border: solid black 3px;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
+    margin-bottom: 30px;
 }
 
 .row {
