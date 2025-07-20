@@ -25,11 +25,21 @@ function createCells(size) {
     }
 }
 
-const sizeSlider = document.querySelector(".sizeSliderInput");
-const sizeIndicator = document.querySelector(".sizeIndicator");
+const sizeSlider = document.querySelector(".size-slider-input");
+const sizeIndicator = document.querySelector(".size-indicator");
 sizeIndicator.textContent = `Size: ${sizeSlider.value}x${sizeSlider.value}`;
 
 sizeSlider.addEventListener("input", () => {
     sizeIndicator.textContent = `Size: ${sizeSlider.value}x${sizeSlider.value}`;
 });
-createCells(16);
+
+createCells(sizeSlider.value);
+
+const startButton = document.querySelector(".start-button");
+startButton.addEventListener("click", () => {
+    const rows = document.querySelectorAll(".row");
+    for (let row of rows) {
+        row.remove();
+    }
+    createCells(sizeSlider.value);
+});

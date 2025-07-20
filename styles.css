@@ -27,8 +27,18 @@ body {
     background-color: black;
 }
 
-.sizeInput {
+.size-input {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.sizeS-slider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.start-button {
+    
 }
