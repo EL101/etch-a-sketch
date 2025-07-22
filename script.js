@@ -38,9 +38,25 @@ createCells(sizeSlider.value);
 
 const startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", () => {
+    // const rows = document.querySelectorAll(".row");
+    // for (let row of rows) {
+    //     row.remove();
+    // }
+    // createCells(sizeSlider.value);
+    const cells = document.querySelectorAll("cell");
+    for (let cell of cells) {
+        cell.classList.toggle("show-border");
+    }
+});
+
+sizeSlider.addEventListener("input", () => {
     const rows = document.querySelectorAll(".row");
     for (let row of rows) {
         row.remove();
     }
     createCells(sizeSlider.value);
+    const cells = document.querySelectorAll(".cell");
+    for (let cell of cells) {
+        cell.classList.toggle("show-border");
+    }
 });
