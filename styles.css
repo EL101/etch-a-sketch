@@ -77,3 +77,16 @@ h1 {
 .show-border {
     border: 1px solid black;
 }
+
+.grid-button {
+    border: 1px solid black;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-sector {
+    width: 20px;
+    height: 20px;
+}

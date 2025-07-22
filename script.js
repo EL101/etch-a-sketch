@@ -1,5 +1,6 @@
 let isDrawing = false;
 let isMouseDown = false;
+let showCellBorders = true;
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
@@ -25,7 +26,9 @@ function createCells(size) {
             });
             cell.style.width = CONTAINER_WIDTH / size + "px";
             cell.style.height = cell.style.width;
-            cell.classList.toggle("show-border");         
+            if (showCellBorders) {
+                cell.classList.toggle("show-border");
+            }      
             row.append(cell);
         }
         container.append(row);
@@ -69,4 +72,17 @@ sizeSlider.addEventListener("input", (e) => {
         deleteCanvas();
         createCells(e.target.value);
     }
+});
+
+const gridButton = document.querySelector(".grid-button");
+const gridSectors = document.querySelectorAll(".grid-sector");
+gridButton.addEventListener("click", () => {
+    for (let sector of gridSectors) {
+        sector.classList.toggle("show-border");
+    }
+    const cells = document.querySelectorAll(".cell");
+    for (let cell of cells) {
+        cell.classList.toggle("show-border");
+    }
+    showCellBorders = !showCellBorders;
 });
