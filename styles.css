@@ -48,6 +48,8 @@ h1 {
     display: flex;
     align-items: center;
     gap: 20px;
+    width: 400px;
+    justify-content: space-evenly;
 }
 
 .size-input > h3 {
@@ -56,3 +58,8 @@ h1 {
     color:rgba(0, 0, 0, 0.535);
 }
 
+.size-slider-input {
+    width: 200px;
+    accent-color: rgb(218, 141, 48);
+    background-color: transparent;
+}
