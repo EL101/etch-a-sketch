@@ -49,7 +49,6 @@ h1 {
     display: flex;
     align-items: center;
     gap: 20px;
-    width: 400px;
     justify-content: space-evenly;
 }
 
@@ -75,7 +74,7 @@ h1 {
 }
 
 .show-border {
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 1);
 }
 
 .grid-button {

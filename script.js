@@ -14,18 +14,25 @@ function createCells(size) {
         for (let j = 0; j < size; j++) {
             const cell = document.createElement("div");
             cell.classList.toggle("cell");
+            const cellContent = document.createElement("div");
+            cellContent.style.opacity = 0;
             cell.addEventListener("mouseenter", (e) => {
                 if (isMouseDown && isDrawing) {
-                    cell.classList.add("hovered");
+                    cellContent.classList.add("hovered");
+                    cellContent.style.opacity = +cellContent.style.opacity + 0.1;
                 }
             });
             cell.addEventListener("mousedown", () => {
                 if (isDrawing) {
-                    cell.classList.add("hovered");
+                    cellContent.classList.add("hovered");
+                    cellContent.style.opacity = +cellContent.style.opacity + 0.1;
                 }
             });
             cell.style.width = CONTAINER_WIDTH / size + "px";
             cell.style.height = cell.style.width;
+            cellContent.style.width = cell.style.width;
+            cellContent.style.height = cell.style.height;
+            cell.append(cellContent);
             if (showCellBorders) {
                 cell.classList.toggle("show-border");
             }      
