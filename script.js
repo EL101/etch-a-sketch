@@ -1,3 +1,4 @@
+let isDrawing = false;
 let isMouseDown = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
@@ -13,13 +14,18 @@ function createCells(size) {
             const cell = document.createElement("div");
             cell.classList.toggle("cell");
             cell.addEventListener("mouseenter", (e) => {
-                if (isMouseDown) {
+                if (isMouseDown && isDrawing) {
                     cell.classList.add("hovered");
                 }
             });
-            cell.addEventListener("mousedown", () => cell.classList.add("hovered"));
+            cell.addEventListener("mousedown", () => {
+                if (isDrawing) {
+                    cell.classList.add("hovered");
+                }
+            });
             cell.style.width = CONTAINER_WIDTH / size + "px";
-            cell.style.height = cell.style.width;            
+            cell.style.height = cell.style.width;
+            cell.classList.toggle("show-border");         
             row.append(cell);
         }
         container.append(row);
@@ -36,27 +42,31 @@ sizeSlider.addEventListener("input", () => {
 
 createCells(sizeSlider.value);
 
+function deleteCanvas() {
+    const rows = document.querySelectorAll(".row");
+    for (let row of rows) {
+        row.remove();
+    }
+}
 const startButton = document.querySelector(".start-button");
 startButton.addEventListener("click", () => {
-    // const rows = document.querySelectorAll(".row");
-    // for (let row of rows) {
-    //     row.remove();
-    // }
-    // createCells(sizeSlider.value);
+    isDrawing = !isDrawing;
+    if (isDrawing) {
+        startButton.textContent = "Reset";
+    } else {
+        startButton.textContent = "Start";
+        deleteCanvas();
+        createCells(sizeSlider.value);
+    }
     const cells = document.querySelectorAll("cell");
     for (let cell of cells) {
         cell.classList.toggle("show-border");
     }
 });
 
-sizeSlider.addEventListener("input", () => {
-    const rows = document.querySelectorAll(".row");
-    for (let row of rows) {
-        row.remove();
-    }
-    createCells(sizeSlider.value);
-    const cells = document.querySelectorAll(".cell");
-    for (let cell of cells) {
-        cell.classList.toggle("show-border");
+sizeSlider.addEventListener("input", (e) => {
+    if (!isDrawing) {
+        deleteCanvas();
+        createCells(e.target.value);
     }
 });
