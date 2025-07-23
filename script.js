@@ -155,4 +155,9 @@ eraseButton.addEventListener("click", () => {
     } else {
         eraseButton.textContent = "Erase";
     }
-})
+});
+
+const menuButtons = document.querySelectorAll(".menu-button");
+for (let menuButton of menuButtons) {
+    menuButton.addEventListener("click", () => menuButton.classList.toggle("clicked"));
+}
