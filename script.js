@@ -4,6 +4,7 @@ let showCellBorders = true;
 let isShading = false;
 let rainbowMode = false;
 let currColor = "black";
+let isErasing = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
@@ -11,7 +12,11 @@ const container = document.querySelector(".container");
 const CONTAINER_WIDTH = container.clientWidth;
 
 function colorCell(e) {
-    e.target.classList.add("hovered");
+    if (isErasing) {
+        e.target.style.backgroundColor = "";
+        e.target.style.opacity = 0;
+        return;
+    }
     if (rainbowMode) {
         const r = Math.floor(Math.random() * 256);
         const g = Math.floor(Math.random() * 256);
@@ -141,3 +146,13 @@ colorPicker.addEventListener("input", () => {
     currColor = colorPicker.value;
 });
 colorPickerWrapper.addEventListener("click", () => colorPicker.click());
+
+const eraseButton = document.querySelector(".erase-button");
+eraseButton.addEventListener("click", () => {
+    isErasing = !isErasing;
+    if (isErasing) {
+        eraseButton.textContent = "Draw";
+    } else {
+        eraseButton.textContent = "Erase";
+    }
+})

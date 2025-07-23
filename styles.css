@@ -35,10 +35,6 @@ h1 {
     display: flex;
 }
 
-.hovered {
-    background-color: black;
-}
-
 .size-slider {
     display: flex;
     align-items: center;
