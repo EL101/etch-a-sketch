@@ -92,3 +92,21 @@ h1 {
     gap: 20px;
     align-self: center;
 }
+
+.cell {
+    overflow: hidden;
+}
+.color-picker-wrapper {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.color-picker {
+    width: 0;
+    height: 0;
+    border: none;
+    background-color: inherit;
+}

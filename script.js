@@ -3,6 +3,7 @@ let isMouseDown = false;
 let showCellBorders = true;
 let isShading = false;
 let rainbowMode = false;
+let currColor = "black";
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
@@ -17,6 +18,9 @@ function colorCell(e) {
         const b = Math.floor(Math.random() * 256);
 
         e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    else {
+        e.target.style.backgroundColor = currColor;
     }
     if (isShading) {
         e.target.style.opacity = +e.target.style.opacity + 0.1;
@@ -33,12 +37,12 @@ function createCells(size) {
             cell.classList.toggle("cell");
             const cellContent = document.createElement("div");
             cellContent.style.opacity = 0;
-            cell.addEventListener("mouseenter", (e) => {
+            cellContent.addEventListener("mouseenter", (e) => {
                 if (isMouseDown && isDrawing) {
                     colorCell(e);
                 }
             });
-            cell.addEventListener("mousedown", (e) => {
+            cellContent.addEventListener("mousedown", (e) => {
                 if (isDrawing) {
                     colorCell(e);
                 }
@@ -128,3 +132,12 @@ rainbowButton.addEventListener("click", () => {
         rainbowButton.textContent = "Rainbow Mode";
     }
 });
+
+const colorPicker = document.querySelector(".color-picker");
+const colorPickerWrapper = document.querySelector(".color-picker-wrapper");
+
+colorPicker.addEventListener("input", () => {
+    colorPickerWrapper.style.backgroundColor = colorPicker.value;
+    currColor = colorPicker.value;
+});
+colorPickerWrapper.addEventListener("click", () => colorPicker.click());
