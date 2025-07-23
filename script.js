@@ -1,6 +1,7 @@
 let isDrawing = false;
 let isMouseDown = false;
 let showCellBorders = true;
+let isShading = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
@@ -19,13 +20,21 @@ function createCells(size) {
             cell.addEventListener("mouseenter", (e) => {
                 if (isMouseDown && isDrawing) {
                     cellContent.classList.add("hovered");
-                    cellContent.style.opacity = +cellContent.style.opacity + 0.1;
+                    if (isShading) {
+                        cellContent.style.opacity = +cellContent.style.opacity + 0.1;
+                    } else {
+                        cellContent.style.opacity = 1;
+                    }
                 }
             });
             cell.addEventListener("mousedown", () => {
                 if (isDrawing) {
                     cellContent.classList.add("hovered");
-                    cellContent.style.opacity = +cellContent.style.opacity + 0.1;
+                    if (isShading) {
+                        cellContent.style.opacity = +cellContent.style.opacity + 0.1;
+                    } else {
+                        cellContent.style.opacity = 1;
+                    }
                 }
             });
             cell.style.width = CONTAINER_WIDTH / size + "px";
@@ -92,4 +101,14 @@ gridButton.addEventListener("click", () => {
         cell.classList.toggle("show-border");
     }
     showCellBorders = !showCellBorders;
+});
+
+const shadeButton = document.querySelector(".shade-button");
+shadeButton.addEventListener("click", () => {
+    isShading = !isShading;
+    if (isShading) {
+        shadeButton.textContent = "Shading Off";
+    } else {
+        shadeButton.textContent = "Shading On";
+    }
 });

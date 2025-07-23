@@ -6,7 +6,7 @@
 
 body {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 30px;
     text-align: center;
     font-family: Bitcount, sans-serif;
@@ -59,12 +59,12 @@ h1 {
     background-color: transparent;
 }
 
-.start-button {
+.menu-button {
     width: 200px;
     font-family: Bitcount, sans-serif;
     background-color: rgb(218, 141, 48);
     border-color:rgba(0, 0, 0, 0.235);
-    font-size: 25px;
+    font-size: 15px;
     padding: 10px;
 }
 
