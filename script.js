@@ -2,12 +2,28 @@ let isDrawing = false;
 let isMouseDown = false;
 let showCellBorders = true;
 let isShading = false;
+let rainbowMode = false;
 document.addEventListener("mousedown", () => isMouseDown = true);
 document.addEventListener("mouseup", () => isMouseDown = false);
 
 const container = document.querySelector(".container");
 const CONTAINER_WIDTH = container.clientWidth;
 
+function colorCell(e) {
+    e.target.classList.add("hovered");
+    if (rainbowMode) {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+
+        e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
+    if (isShading) {
+        e.target.style.opacity = +e.target.style.opacity + 0.1;
+    } else {
+        e.target.style.opacity = 1;
+    }
+}
 function createCells(size) {
     for (let i = 0; i < size; i++) {
         const row = document.createElement("div");
@@ -19,22 +35,12 @@ function createCells(size) {
             cellContent.style.opacity = 0;
             cell.addEventListener("mouseenter", (e) => {
                 if (isMouseDown && isDrawing) {
-                    cellContent.classList.add("hovered");
-                    if (isShading) {
-                        cellContent.style.opacity = +cellContent.style.opacity + 0.1;
-                    } else {
-                        cellContent.style.opacity = 1;
-                    }
+                    colorCell(e);
                 }
             });
-            cell.addEventListener("mousedown", () => {
+            cell.addEventListener("mousedown", (e) => {
                 if (isDrawing) {
-                    cellContent.classList.add("hovered");
-                    if (isShading) {
-                        cellContent.style.opacity = +cellContent.style.opacity + 0.1;
-                    } else {
-                        cellContent.style.opacity = 1;
-                    }
+                    colorCell(e);
                 }
             });
             cell.style.width = CONTAINER_WIDTH / size + "px";
@@ -110,5 +116,15 @@ shadeButton.addEventListener("click", () => {
         shadeButton.textContent = "Shading Off";
     } else {
         shadeButton.textContent = "Shading On";
+    }
+});
+
+const rainbowButton = document.querySelector(".rainbow-button");
+rainbowButton.addEventListener("click", () => {
+    rainbowMode = !rainbowMode;
+    if (rainbowMode) {
+        rainbowButton.textContent = "Normal Mode";
+    } else {
+        rainbowButton.textContent = "Rainbow Mode";
     }
 });
