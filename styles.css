@@ -6,8 +6,8 @@
 
 body {
     display: flex;
-    justify-content: space-evenly;
-    gap: 30px;
+    justify-content: center;
+    gap: 40px;
     text-align: center;
     font-family: Bitcount, sans-serif;
     background-color: rgba(0, 0, 0, 0.172);
@@ -50,13 +50,13 @@ h1 {
 }
 
 .size-slider-input {
-    width: 150px;
+    width: 180px;
     accent-color: rgb(218, 141, 48);
     background-color: transparent;
 }
 
 .menu-button {
-    width: 200px;
+    width: inherit;
     font-family: Bitcount, sans-serif;
     background-color: rgb(218, 141, 48);
     border-color:rgba(0, 0, 0, 0.235);
@@ -87,6 +87,7 @@ h1 {
     align-items: center;
     gap: 20px;
     align-self: center;
+    width: 200px;
 }
 
 .cell {
